@@ -10,6 +10,7 @@
     <div id="app">
         <h2>Is Daphne al terug?</h2>
         <h1>Nee</h1>
+        <h2>Nog <span id="count"></span> nachtjes slapen</h2>
     </div>
 
     <style>
@@ -42,5 +43,21 @@
             h2 { font-size: 1em; }
         }
     </style>
+
+    <script>
+        if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+            init();
+        }
+        else {
+            document.addEventListener('DOMContentLoaded', init);
+        }
+
+        function init() {
+            var target = new Date('2018-03-25');
+            var now = new Date();
+            var days = Math.floor((target - now) / (1000 * 60 * 60 * 24)) + 1;
+            document.querySelector('#count').innerHTML = days;
+        }
+</script>
 </body>
 </html>
